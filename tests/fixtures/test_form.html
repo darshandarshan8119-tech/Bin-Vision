@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIN-Vision Phase 1 Test — Registration Form</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      background: #1a1a2e;
+      border: 1px solid #2d2d50;
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 560px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1e3a5f;
+      color: #60a5fa;
+      border: 1px solid #2563eb;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #94a3b8;
+      margin-bottom: 0.5rem;
+    }
+
+    label .required {
+      color: #f87171;
+      margin-left: 2px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.65rem 0.875rem;
+      background: #0f0f1a;
+      border: 1px solid #2d2d50;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #6366f1;
+    }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6366f1;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 1.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #2d2d50;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+
+    button:hover { opacity: 0.85; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #2d2d50;
+    }
+
+    .hint {
+      background: #1e3a5f22;
+      border: 1px solid #2563eb44;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: #60a5fa;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Test section: ARIA-label only (no visible label) ── */
+    .hidden-label-group input {
+      margin-top: 0.25rem;
+    }
+
+    /* ── Test section: label wrapping input ── */
+    label.wrap-label {
+      display: block;
+      cursor: pointer;
+    }
+
+    /* ── Image section (for Phase 7 OCR test) ── */
+    .image-test {
+      background: #0f0f1a;
+      border: 1px dashed #2d2d50;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="badge">🧪 BIN-Vision Phase 1 Test Page</div>
+
+  <h1>Registration Form</h1>
+  <p class="subtitle">
+    Open DevTools → Console to see the DOM analysis output after loading the extension.
+  </p>
+
+  <div class="hint">
+    💡 This form tests all 8 label-resolution strategies used by the DOM analyzer.
+    Check the console table to verify each field is correctly detected.
+  </div>
+
+  <form id="registration-form" action="/register" method="POST">
+
+    <!-- ── STRATEGY 1: Explicit <label for="id"> ── -->
+    <div class="section-label">Strategy 1 — Explicit &lt;label for="id"&gt;</div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="first-name">First Name <span class="required">*</span></label>
+        <input
+          id="first-name"
+          type="text"
+          name="first_name"
+          placeholder="e.g. Darsh"
+          autocomplete="given-name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name <span class="required">*</span></label>
+        <input
+          id="last-name"
+          type="text"
+          name="last_name"
+          placeholder="e.g. Shah"
+          autocomplete="family-name"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email-address">Email Address <span class="required">*</span></label>
+      <input
+        id="email-address"
+        type="email"
+        name="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="phone-number">Phone Number</label>
+      <input
+        id="phone-number"
+        type="tel"
+        name="phone"
+        placeholder="+91 98765 43210"
+        autocomplete="tel"
+      />
+    </div>
+
+    <!-- ── STRATEGY 2: aria-label (no visible label) ── -->
+    <div class="section-label">Strategy 2 — aria-label only</div>
+
+    <div class="form-group hidden-label-group">
+      <input
+        type="text"
+        name="username"
+        aria-label="Username"
+        placeholder="Choose a username"
+        autocomplete="username"
+      />
+    </div>
+
+    <!-- ── STRATEGY 3: aria-labelledby ── -->
+    <div class="section-label">Strategy 3 — aria-labelledby</div>
+
+    <div class="form-group">
+      <span id="dob-label" style="font-size:0.875rem; color:#94a3b8; display:block; margin-bottom:0.5rem;">
+        Date of Birth
+      </span>
+      <input
+        type="date"
+        name="dob"
+        aria-labelledby="dob-label"
+      />
+    </div>
+
+    <!-- ── STRATEGY 4: Parent <label> wrapping ── -->
+    <div class="section-label">Strategy 4 — Parent &lt;label&gt; wrapping</div>
+
+    <div class="form-group">
+      <label class="wrap-label">
+        Gender
+        <select name="gender" style="margin-top:0.5rem;">
+          <option value="">-- Select --</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+          <option value="O">Other</option>
+          <option value="P">Prefer not to say</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- ── STRATEGY 5: Placeholder only ── -->
+    <div class="section-label">Strategy 5 — Placeholder only (no label element)</div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        name="city"
+        placeholder="City"
+      />
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <input
+          type="text"
+          name="state"
+          placeholder="State / Province"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          name="pincode"
+          placeholder="PIN Code"
+          inputmode="numeric"
+          maxlength="6"
+        />
+      </div>
+    </div>
+
+    <!-- ── STRATEGY 6: Previous sibling text ── -->
+    <div class="section-label">Strategy 6 — Previous sibling text node</div>
+
+    <div class="form-group">
+      <span style="display:block; font-size:0.875rem; color:#94a3b8; margin-bottom:0.5rem;">
+        Aadhaar Number
+      </span>
+      <input
+        type="text"
+        name="aadhaar"
+        inputmode="numeric"
+        maxlength="14"
+        pattern="\d{4}\s?\d{4}\s?\d{4}"
+      />
+    </div>
+
+    <!-- ── STRATEGY 7: title attribute ── -->
+    <div class="section-label">Strategy 7 — title attribute</div>
+
+    <div class="form-group">
+      <input
+        type="text"
+        name="pan"
+        title="PAN Card Number"
+        placeholder="ABCDE1234F"
+        maxlength="10"
+        style="text-transform: uppercase;"
+      />
+    </div>
+
+    <!-- ── Password fields (values must NOT be captured) ── -->
+    <div class="section-label">Security Test — Password fields (value never captured)</div>
+
+    <div class="form-group">
+      <label for="password">Password <span class="required">*</span></label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        autocomplete="new-password"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password <span class="required">*</span></label>
+      <input
+        id="confirm-password"
+        type="password"
+        name="confirm_password"
+        autocomplete="new-password"
+        required
+      />
+    </div>
+
+    <!-- ── Additional fields ── -->
+    <div class="section-label">Additional Fields</div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <textarea
+        id="address"
+        name="address"
+        rows="3"
+        placeholder="Enter your full address"
+        autocomplete="street-address"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <select id="country" name="country" autocomplete="country">
+        <option value="">-- Select Country --</option>
+        <option value="IN" selected>India</option>
+        <option value="US">United States</option>
+        <option value="GB">United Kingdom</option>
+        <option value="CA">Canada</option>
+        <option value="AU">Australia</option>
+      </select>
+    </div>
+
+    <!-- ── Buttons ── -->
+    <div class="btn-row">
+      <button type="button" class="btn-secondary" id="clear-btn">Clear</button>
+      <button type="submit" class="btn-primary" id="submit-btn">Register</button>
+    </div>
+
+  </form>
+
+  <!-- ── Navigation links (for link detection test) ── -->
+  <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid #2d2d50;">
+    <p style="font-size:0.8rem; color:#475569; margin-bottom:0.75rem;">Navigation links (for link detection test):</p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+      <a href="/login" style="color:#6366f1; font-size:0.875rem;">Already have an account? Login</a>
+      <a href="/privacy" style="color:#475569; font-size:0.875rem;">Privacy Policy</a>
+      <a href="/terms" style="color:#475569; font-size:0.875rem;">Terms of Service</a>
+    </div>
+  </div>
+
+  <!-- ── Search bar (for ROLE test) ── -->
+  <div style="margin-top:1.5rem;">
+    <p style="font-size:0.8rem; color:#475569; margin-bottom:0.75rem;">Search (role="combobox" test):</p>
+    <div style="position:relative;">
+      <input
+        type="search"
+        name="search"
+        placeholder="Search..."
+        role="combobox"
+        aria-label="Site search"
+        aria-expanded="false"
+        style="width:100%;"
+      />
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Simple clear button handler (no form submission on this test page)
+  document.getElementById('clear-btn').addEventListener('click', () => {
+    document.getElementById('registration-form').reset();
+  });
+
+  document.getElementById('registration-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Form submission intercepted (test page — no actual submission)');
+  });
+</script>
+
+</body>
+</html>

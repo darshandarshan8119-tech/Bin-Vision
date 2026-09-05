@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIN-Vision — Transparency Panel</title>
+  <link rel="stylesheet" href="panel.css" />
+  <link rel="stylesheet" href="../consent/consent_modal.css" />
+</head>
+<body>
+  <header class="bv-header">
+    <div class="bv-brand">
+      <div class="bv-brand-icon">🧠</div>
+      <div>
+        <div class="bv-brand-title">BIN-Vision</div>
+        <div class="bv-brand-sub">Privacy-Preserving Agent</div>
+      </div>
+    </div>
+    <div id="bv-status-badge" class="bv-status-badge bv-status-idle">IDLE</div>
+  </header>
+
+  <!-- Task Control Card -->
+  <section class="bv-card">
+    <div class="bv-card-title">
+      <span>Autonomous Task</span>
+      <span id="bv-step-counter" style="color: #a5b4fc; font-size: 11px;">Step 0 / 20</span>
+    </div>
+
+    <div class="bv-goal-form">
+      <input
+        type="text"
+        id="bv-input-goal"
+        class="bv-input"
+        placeholder="e.g. Fill registration form with my profile..."
+      />
+      <div class="bv-btn-group">
+        <button id="bv-btn-start-task" class="bv-btn-primary">▶ Start Agent</button>
+        <button id="bv-btn-abort-task" class="bv-btn-danger">■ Stop / Abort</button>
+      </div>
+    </div>
+
+    <div class="bv-progress-bar-bg">
+      <div id="bv-progress-bar-fill" class="bv-progress-bar-fill"></div>
+    </div>
+  </section>
+
+  <!-- Privacy Guard Shield Card -->
+  <section class="bv-card">
+    <div class="bv-card-title">Privacy Guard</div>
+    <div id="bv-privacy-status" class="bv-privacy-hud">
+      🛡️ Zero Raw PII Leaked
+      <span class="bv-status-pill bv-pill-pass">PASS</span>
+    </div>
+    <div style="font-size: 11px; color: var(--bv-text-muted); margin-top: 8px;">Active Vault Tokens:</div>
+    <div id="bv-tokens-container" class="bv-tokens-wrapper">
+      <span class="bv-empty-text">No active tokens in vault</span>
+    </div>
+  </section>
+
+  <!-- Page Perception Card -->
+  <section class="bv-card">
+    <div class="bv-card-title">Page Perception</div>
+    <div id="bv-page-info" style="font-size: 12px; font-weight: 500; color: #cbd5e1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+      —
+    </div>
+    <div class="bv-metrics-grid">
+      <div class="bv-metric-box">
+        <div id="bv-forms-count" class="bv-metric-num">0</div>
+        <div class="bv-metric-lbl">Forms</div>
+      </div>
+      <div class="bv-metric-box">
+        <div id="bv-elements-count" class="bv-metric-num">0</div>
+        <div class="bv-metric-lbl">Elements</div>
+      </div>
+      <div class="bv-metric-box">
+        <div id="bv-confidence-val" class="bv-metric-num" style="color: #34d399;">0%</div>
+        <div class="bv-metric-lbl">Confidence</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Action Timeline & Activity Feed -->
+  <section class="bv-card" style="margin-bottom: 0;">
+    <div class="bv-card-title">
+      <span>Action Timeline</span>
+      <span style="font-size: 10px; color: var(--bv-text-muted);">Real-time</span>
+    </div>
+    <div id="bv-timeline-list" class="bv-timeline-container">
+      <div class="bv-timeline-empty">No actions executed yet.</div>
+    </div>
+  </section>
+
+  <script type="module" src="panel.ts"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    // Strict type checking — catch bugs early
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Path aliases matching vite.config.ts
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["src/shared/*"],
+      "@perception/*": ["src/perception/*"],
+      "@privacy/*": ["src/privacy/*"],
+      "@agent/*": ["src/agent/*"],
+      "@profile/*": ["src/profile/*"],
+      "@ui/*": ["src/ui/*"]
+    },
+
+    // Chrome extension types
+    "types": ["chrome"],
+
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts", "vite.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}

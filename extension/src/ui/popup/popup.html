@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIN-Vision</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="bv-popup-header">
+    <div class="bv-popup-brand">
+      <div class="bv-popup-icon">🧠</div>
+      <div class="bv-popup-title">BIN-Vision</div>
+    </div>
+    <span id="bv-popup-agent-state" class="bv-status-badge">READY</span>
+  </div>
+
+  <div class="bv-card">
+    <div class="bv-status-row">
+      <span class="bv-status-label">Privacy Shield</span>
+      <span id="bv-popup-privacy" class="bv-status-badge">🛡️ ACTIVE</span>
+    </div>
+    <div class="bv-status-row">
+      <span class="bv-status-label">User Profile</span>
+      <span id="bv-popup-profile-status" style="font-weight:600; color:#c4b5fd;">Encrypted Vault</span>
+    </div>
+  </div>
+
+  <div class="bv-card">
+    <input
+      type="text"
+      id="bv-popup-goal-input"
+      class="bv-input"
+      placeholder="What should the agent do?"
+    />
+    <button id="bv-popup-btn-launch" class="bv-btn bv-btn-primary">
+      ▶ Launch Agent Task
+    </button>
+    <button id="bv-popup-btn-open-panel" class="bv-btn bv-btn-secondary">
+      🪟 Open Transparency Panel
+    </button>
+  </div>
+
+  <script type="module" src="popup.ts"></script>
+</body>
+</html>

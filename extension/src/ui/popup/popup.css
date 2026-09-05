@@ -1,0 +1,151 @@
+/**
+ * popup.css
+ *
+ * Compact glassmorphic styles for BIN-Vision Extension Popup.
+ */
+
+:root {
+  --bv-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --bv-bg-base: #0f172a;
+  --bv-bg-card: rgba(30, 41, 59, 0.85);
+  --bv-border-subtle: rgba(255, 255, 255, 0.08);
+  --bv-text-primary: #f8fafc;
+  --bv-text-secondary: #94a3b8;
+  --bv-text-muted: #64748b;
+  --bv-accent-purple: #8b5cf6;
+  --bv-accent-indigo: #6366f1;
+  --bv-accent-emerald: #10b981;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 340px;
+  background-color: var(--bv-bg-base);
+  color: var(--bv-text-primary);
+  font-family: var(--bv-font-sans);
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 14px;
+}
+
+.bv-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--bv-border-subtle);
+}
+
+.bv-popup-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bv-popup-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--bv-accent-purple), var(--bv-accent-indigo));
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.bv-popup-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.bv-card {
+  background: var(--bv-bg-card);
+  border: 1px solid var(--bv-border-subtle);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.bv-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.bv-status-row:last-child {
+  margin-bottom: 0;
+}
+
+.bv-status-label {
+  color: var(--bv-text-secondary);
+}
+
+.bv-status-badge {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.bv-input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--bv-border-subtle);
+  border-radius: 6px;
+  color: var(--bv-text-primary);
+  font-size: 12px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.bv-input:focus {
+  border-color: rgba(139, 92, 246, 0.6);
+}
+
+.bv-btn {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.bv-btn-primary {
+  background: linear-gradient(135deg, var(--bv-accent-purple), var(--bv-accent-indigo));
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.bv-btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+.bv-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--bv-text-secondary);
+  border: 1px solid var(--bv-border-subtle);
+}
+
+.bv-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--bv-text-primary);
+}
